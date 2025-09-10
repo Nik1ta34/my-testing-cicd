@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-python-app-service
+  namespace: default # Или ваше пространство имен
+spec:
+  type: NodePort
+  selector:
+    app: my-python-app # Соответствует метке в вашем Deployment
+  ports:
+  - protocol: TCP
+    port: 5000         # Порт, на котором ваше приложение слушает внутри Pod'а
+    targetPort: 5000    # Порт, на который Service будет перенаправлять трафик внутри Pod'а
+    nodePort: 32333     # Порт на каждом узле, через который вы будете получать доступ к приложению (30000-32767)
+
+
