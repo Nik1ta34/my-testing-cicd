@@ -1,22 +1,13 @@
 pipeline {
     agent any
     environment {
-        ARGOCD_SERVER = 'localhost:32095' // Update to your ArgoCD server address
+        ARGOCD_SERVER = 'localhost:30384' // Update to your ArgoCD server address
     }
     stages {
         stage('Check Docker') {
             steps {
                 // Verify that Docker is available
                 sh 'docker --version'
-            }
-        }
-
-        stage('Build Docker Image') {
-            steps {
-                script {
-                    // Build the Docker image and tag it
-                    def dockerImage = docker.build('my-python-app:latest')
-                }
             }
         }
 
